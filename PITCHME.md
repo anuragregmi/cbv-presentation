@@ -73,7 +73,25 @@ class HomeView(View):
 from .views import HomeView
 
 urlpatterns = [
-  url(r'^home/$', HomeView.as_view())
+  url(r'^home/$', HomeView.as_view(), name='home')
 ]
 ```
+
+---
+
+- What really happened there?
+- What is there in View that we extended?
+
+---
+
+**There are 4 main methods in View**
+````python
+as_view(cls, **initkwargs)
+dispatch(self, request, *args, **kwargs)
+http_method_not_allowed(self, request, *args, **kwargs)
+options()
+```
+
+---
+
 
