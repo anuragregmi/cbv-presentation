@@ -180,7 +180,7 @@ class HomeView(View):
 
 ```
 ---
-# There's is a better way
+## There's is a better way
 ---
 ```python
 from django.views.generic.base import TemplateView
@@ -198,9 +198,37 @@ class HomeView(TemplateView)
         return context
 ```
 ---
-# What is in that TemplateView ?
+**What is in that TemplateView ?**
 - TemplateView extends three classes
-  - TemplateResponseMixin
   - ContextMixin
+  - TemplateResponseMixin
   - View
 ---
+<p><span class="slide-title">ContextMixin</span></p>
+```python
+extra_context = None
+
+get_context_data(self, **kwargs)
+```
+---
+<p><span class="slide-title">TemplateResponseMixin</span></p>
+```python
+content_type = None 
+response_class = <class 'django.template.response.TemplateResponse'> 	TemplateResponseMixin
+template_engine = None
+template_name = None
+
+get_template_names(self)
+
+render_to_response(self, context, **response_kwargs)
+```
+---
+<p><span class="slide-title">TemplateResponseMixin</span></p>
+
+```python
+
+def get(self, request, *args, **kwargs):
+    context = self.get_context_data(**kwargs)
+    return self.render_to_response(context)
+
+```
