@@ -247,6 +247,6 @@ def get(self, request, *args, **kwargs):
     return self.render_to_response(context)
 
 ```
----
+---?image=assets/image/gitpitch-audience.jpg&opacity=100
 ## To be continued . . .
 Powered by [gitpitch.com](https://gitpitch.com/)
