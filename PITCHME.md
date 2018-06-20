@@ -19,8 +19,7 @@ from .views import home_view
 urlpatterns = [
   url(r'^home/$', home_view, name='home')
 ]
-```
-|
+``` 
 
 
 *views.py*
@@ -28,7 +27,7 @@ urlpatterns = [
 def home_view(request, *args, **kwargs):
   return HttpResponse("This is home page")
 ```
-|
+
 
 ---
 
@@ -87,13 +86,47 @@ urlpatterns = [
 ---
 
 **There are 4 main methods in View**
-````python
+```python
 as_view(cls, **initkwargs)
+
 dispatch(self, request, *args, **kwargs)
+
 http_method_not_allowed(self, request, *args, **kwargs)
-options()
+
+options(self, request, *args, **kwargs)
 ```
 
 ---
+```python
+as_view(cls, **initkwargs)
+```
 
+- Main entry point for a request-response process.|
+- Sets `request`,`args`, `kwargs` attributes of the view.|
+- Calls dispatch
 
+---
+```python
+dispatch(self, request, *args, **kwargs)
+```
+
+- Try to dispatch to the right method.|
+- if a method doesn't exist, defer to the error handler. Also defer to the error handler if the request method isn't on the approved list.|
+
+---
+
+```python
+http_method_not_allowed(self, request, *args, **kwargs)
+```
+
+- called by dispatch if requested method is not allowed|
+- Returns `HttpResponseNotAllowed`|
+
+---
+```python
+options(self, request, *args, **kwargs)
+```
+
+- Handle responding to requests for the OPTIONS HTTP verb.|
+- The HTTP OPTIONS method is used to describe the communication options for the target resource.|
+---
