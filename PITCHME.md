@@ -38,9 +38,11 @@ def home_view(request, *args, **kwargs):
 ```python
 
 def home_view(request, *args, **kwargs):
+
   if request.method == 'GET':
     # do something
     return HttpResponse(...)
+    
   elif request.method == 'POST':
     # do another thing
     return HttpResponse(...)
@@ -131,4 +133,74 @@ options(self, request, *args, **kwargs)
 - The HTTP OPTIONS method is used to describe the communication options for the target resource.|
 ---
 
+# What now?
+- Let's render some templates |
 
+--- 
+*views.py*
+```python
+from django.shortcuts import render
+
+def home_page(request, *args, **kwargs):
+  
+  context = {
+    'name': 'Aayulogic',
+    'address': 'Minbhawan'
+  }
+  
+  return render(request, 'home_page.html', context)
+```
+---
+*home_page.html*
+```htm
+<!DOCTYPE html>
+<head>
+  <title>{{ name }}</title>
+</head>
+<body>
+  <h1> {{ name }} </h1>
+  <h2> {{ address }} </h2>
+</body>
+</html>
+```
+---
+#### Let's do that in Class Based View
+```python
+from django.views.generic import View
+
+class HomeView(View):
+  
+  def get(request, *args, **kwargs):
+    context = {
+      'name': 'Aayulogic',
+      'address': 'Minbhawan'
+    }
+  
+    return render(request, 'home_page.html', context)
+
+```
+---
+# There's is a better way
+---
+```python
+from django.views.generic.base import TemplateView
+
+class HomeView(TemplateView)
+    template_name = "home_page.html"
+
+    def get_context_data(self, **kwargs):
+        
+        context = super().get_context_data(**kwargs)
+        
+        context['name'] = 'Aayulogic'
+        context['address'] = 'Minbhawan'
+        
+        return context
+```
+---
+# What is in that TemplateView ?
+- TemplateView extends three classes
+  - TemplateResponseMixin
+  - ContextMixin
+  - View
+---
