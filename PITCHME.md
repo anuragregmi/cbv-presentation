@@ -185,7 +185,7 @@ class HomeView(View):
 ```python
 from django.views.generic.base import TemplateView
 
-class HomeView(TemplateView)
+class HomeView(TemplateView):
     template_name = "home_page.html"
 
     def get_context_data(self, **kwargs):
