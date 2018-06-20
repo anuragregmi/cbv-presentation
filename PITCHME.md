@@ -103,7 +103,7 @@ as_view(cls, **initkwargs)
 
 - Main entry point for a request-response process. |
 - Sets *request*, *args*, *kwargs* attributes of the view. |
-- Calls dispatch
+- Calls dispatch |
 
 ---
 ```python
@@ -120,7 +120,7 @@ http_method_not_allowed(self, request, *args, **kwargs)
 ```
 
 - called by dispatch if requested method is not allowed. |
-- Returns *HttpResponseNotAllowed* |
+- Returns HttpResponseNotAllowed |
 
 ---
 ```python
