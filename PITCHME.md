@@ -20,6 +20,7 @@ urlpatterns = [
   url(r'^home/$', home_view, name='home')
 ]
 ```
+|
 
 
 *views.py*
@@ -27,6 +28,7 @@ urlpatterns = [
 def home_view(request, *args, **kwargs):
   return HttpResponse("This is home page")
 ```
+|
 
 ---
 
