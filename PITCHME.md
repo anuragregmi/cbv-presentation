@@ -10,13 +10,18 @@
 - Django will choose a view by examining the URL that’s requested (to be precise, the part of the URL after the domain name) |
 
 ---
+*urls.py*
 ```python
+from .views import home_view
+
 
 urlpatterns = [
   url(r'^home/$', home_view)
 ]
 ```
 
+
+*views.py*
 ```python
 def home_view(request, *args, **kwargs):
   return HttpResponse("This is home page")
