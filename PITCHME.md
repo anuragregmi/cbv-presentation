@@ -152,7 +152,7 @@ def home_page(request, *args, **kwargs):
 ```
 ---
 *home_page.html*
-```htm
+```html+jinja
 <!DOCTYPE html>
 <head>
   <title>{{ name }}</title>
