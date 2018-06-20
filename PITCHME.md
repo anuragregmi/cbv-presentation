@@ -70,6 +70,7 @@ class HomeView(View):
 ```
 
 ---
+@title[Class Based Views Base]
 <p><span class="slide-title">Do little change in urls.py</span></p>
 
 ```python
@@ -81,11 +82,13 @@ urlpatterns = [
 ```
 
 ---
+@title[What happened?]
 
 - What really happened there? |
 - What is there in View that we extended? |
 
 ---
+@title[View]
 
 **There are 4 main methods in View**
 ```python
@@ -99,6 +102,7 @@ options(self, request, *args, **kwargs)
 ```
 
 ---
+@title[as_view]
 ```python
 as_view(cls, **initkwargs)
 ```
@@ -108,6 +112,7 @@ as_view(cls, **initkwargs)
 - Calls dispatch |
 
 ---
+@title[dispatch]
 ```python
 dispatch(self, request, *args, **kwargs)
 ```
@@ -116,7 +121,7 @@ dispatch(self, request, *args, **kwargs)
 - if a method doesn't exist, defer to the error handler. Also defer to the error handler if the request method isn't on the approved list.|
 
 ---
-
+@title[http_method_not_allowed]
 ```python
 http_method_not_allowed(self, request, *args, **kwargs)
 ```
@@ -125,6 +130,7 @@ http_method_not_allowed(self, request, *args, **kwargs)
 - Returns HttpResponseNotAllowed |
 
 ---
+@title[options]
 ```python
 options(self, request, *args, **kwargs)
 ```
@@ -132,7 +138,7 @@ options(self, request, *args, **kwargs)
 - Handle responding to requests for the OPTIONS HTTP verb.|
 - The HTTP OPTIONS method is used to describe the communication options for the target resource.|
 ---
-
+@title[What now?]
 # What now?
 - Let's render some templates |
 
@@ -151,6 +157,7 @@ def home_page(request, *args, **kwargs):
   return render(request, 'home_page.html', context)
 ```
 ---
+@title[home_page.html]
 *home_page.html*
 ```html+jinja
 <!DOCTYPE html>
@@ -164,6 +171,7 @@ def home_page(request, *args, **kwargs):
 </html>
 ```
 ---
+@title[Template in CBV]
 #### Let's do that in Class Based View
 ```python
 from django.views.generic import View
@@ -180,8 +188,10 @@ class HomeView(View):
 
 ```
 ---
-## There's is a better way
+@title[There is a better way]
+## There is a better way
 ---
+@title[TemplateView]
 ```python
 from django.views.generic.base import TemplateView
 
@@ -198,12 +208,14 @@ class HomeView(TemplateView):
         return context
 ```
 ---
+@title[TemplateView]
 **What is in that TemplateView ?**
 - TemplateView extends three classes
   - ContextMixin
   - TemplateResponseMixin
   - View
 ---
+@title[Context Mixin]
 <p><span class="slide-title">ContextMixin</span></p>
 ```python
 extra_context = None
@@ -211,6 +223,7 @@ extra_context = None
 get_context_data(self, **kwargs)
 ```
 ---
+@title[Template Response Mixin]
 <p><span class="slide-title">TemplateResponseMixin</span></p>
 ```python
 content_type = None 
@@ -223,7 +236,8 @@ get_template_names(self)
 render_to_response(self, context, **response_kwargs)
 ```
 ---
-<p><span class="slide-title">TemplateResponseMixin</span></p>
+@title[Template View]
+<p><span class="slide-title">TemplateView</span></p>
 
 ```python
 
