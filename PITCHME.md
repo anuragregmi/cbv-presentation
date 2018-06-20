@@ -3,7 +3,6 @@
 ### Django
 
 ---
-
 @title[Views]
 <span class="slide-title">Views</span>
 
@@ -11,6 +10,7 @@
 - Django will choose a view by examining the URL that’s requested (to be precise, the part of the URL after the domain name) |
 
 ---
+@title[Views]
 *urls.py*
 ```python
 from .views import home_view
@@ -143,6 +143,7 @@ options(self, request, *args, **kwargs)
 - Let's render some templates |
 
 --- 
+@title[template render]
 *views.py*
 ```python
 from django.shortcuts import render
