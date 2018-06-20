@@ -5,6 +5,7 @@
 ---
 
 @title[Function Based Views]
+<span class="slide-title">JavaScript Block</span>
 
 - In Django, web pages and other content are delivered by views. Each view is represented by a simple Python function (or method, in the case of class-based views). |
 - Django will choose a view by examining the URL that’s requested (to be precise, the part of the URL after the domain name) |
