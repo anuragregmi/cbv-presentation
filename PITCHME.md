@@ -214,7 +214,7 @@ get_context_data(self, **kwargs)
 <p><span class="slide-title">TemplateResponseMixin</span></p>
 ```python
 content_type = None 
-response_class = <class 'django.template.response.TemplateResponse'> 	TemplateResponseMixin
+response_class = <class 'django.template.response.TemplateResponse'>
 template_engine = None
 template_name = None
 
