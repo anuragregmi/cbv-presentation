@@ -102,7 +102,7 @@ as_view(cls, **initkwargs)
 ```
 
 - Main entry point for a request-response process. |
-- Sets *request*, *args*, *kwargs* attributes of the view. |
+- Sets request, args, kwargs attributes of the view. |
 - Calls dispatch |
 
 ---
@@ -130,3 +130,5 @@ options(self, request, *args, **kwargs)
 - Handle responding to requests for the OPTIONS HTTP verb.|
 - The HTTP OPTIONS method is used to describe the communication options for the target resource.|
 ---
+
+
